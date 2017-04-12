@@ -23,6 +23,10 @@
                     <label>Region</label>
                     <source_model>Thai\S3\Model\Config\Source\Region</source_model>
                 </field>
+                <field id="endpoint" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>S3 Endpoint</label>
+                    <comment>The full URI of the webservice. This is only required when connecting to a custom endpoint</comment>
+                </field>
             </group>
         </section>
     </system>

@@ -57,6 +57,7 @@ class S3 extends DataObject
         $this->logger = $logger;
 
         $this->client = new \Aws\S3\S3Client([
+            'endpoint' => $this->helper->getEndpoint(),
             'version' => 'latest',
             'region' => $this->helper->getRegion(),
             'credentials' => [

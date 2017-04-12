@@ -68,6 +68,11 @@ class ConfigSetCommand extends \Symfony\Component\Console\Command\Command
             $config->save();
         }
 
+        if (!empty($input->getOption('endpoint'))) {
+            $config->setDataByPath('thai_s3/general/endpoint', $input->getOption('endpoint'));
+            $config->save();
+        }
+
         $output->writeln('<info>You have successfully updated your S3 credentials.</info>');
     }
 
@@ -77,7 +82,9 @@ class ConfigSetCommand extends \Symfony\Component\Console\Command\Command
             new InputOption('access-key-id', null, InputOption::VALUE_OPTIONAL, 'a valid AWS access key ID'),
             new InputOption('secret-key', null, InputOption::VALUE_OPTIONAL, 'a valid AWS secret access key'),
             new InputOption('bucket', null, InputOption::VALUE_OPTIONAL, 'an S3 bucket name'),
-            new InputOption('region', null, InputOption::VALUE_OPTIONAL, 'an S3 region, e.g. us-east-1')
+            new InputOption('region', null, InputOption::VALUE_OPTIONAL, 'an S3 region, e.g. us-east-1'),
+            new InputOption('endpoint', null, InputOption::VALUE_OPTIONAL,
+                'the full URI of the webservice. This is only required when connecting to a custom endpoint')
         ];
     }
 
